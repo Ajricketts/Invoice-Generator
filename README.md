@@ -1,4 +1,4 @@
-# title(){return this.options.title||this.options.name}
+# Scrimba Invoice Generator
 
 ## Supporting Scrimba
 
