@@ -12,6 +12,8 @@ const pullBtn = document.getElementsByClassName("btn")[2]
 const taskDiv = document.getElementsByClassName("task")[0]
 const totalDiv = document.getElementsByClassName("total")[0]
 const sendBtn = document.getElementsByClassName("send-inv")[0]
+const sumEl = document.getElementsByClassName("total-amt")[0]
+let totalAmount = 0
 
 // Boolean values to track whether a given service has been added to the invoice already (dont want to add services twice)
 let washAdded = false
@@ -23,6 +25,9 @@ washBtn.addEventListener("click", function(){
     if (!washAdded) {
         addTask(Object.keys(services)[0]) 
         washAdded = true
+        // Add the price of this service to the total and update the DOM
+        totalAmount += 10
+        updateTotal()
     }
 })
 
@@ -31,6 +36,8 @@ mowBtn.addEventListener("click", function(){
     if (!mowAdded) {
         addTask(Object.keys(services)[1]) 
         mowAdded = true
+        totalAmount += 20
+        updateTotal()
     }
 })
 
@@ -39,6 +46,8 @@ pullBtn.addEventListener("click", function(){
     if (!pullAdded) {
         addTask(Object.keys(services)[2]) 
         pullAdded = true
+        totalAmount += 30
+        updateTotal()
     }
 })
 
@@ -69,11 +78,22 @@ function removeTask(elem, dictKey) {
     document.getElementById(dictKey).remove()
     if (dictKey == "Wash Car") {
         washAdded = false
+        totalAmount -= 10
+        updateTotal()
     }
     else if (dictKey =="Mow Lawn"){
         mowAdded = false
+        totalAmount -= 20
+        updateTotal()
     }
     else {
         pullAdded = false
+        totalAmount -= 30
+        updateTotal()
     }
+}
+
+// Update the Total Amount 
+function updateTotal() {
+    sumEl.textContent = "$" + totalAmount
 }
