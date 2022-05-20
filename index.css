@@ -71,8 +71,6 @@ hr {
     text-align: right;
     margin-left:auto;
     margin-right:0;
-    /* float: right; */
-    /* margin-left: 285px; */
 }
 
 .desc {
@@ -91,7 +89,6 @@ hr {
 }
 
 .price {
-    /* margin-left: 270px; */
     text-align: right;
     margin-top: 40px;
     font-size: 26px;
